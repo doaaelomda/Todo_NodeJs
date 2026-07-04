@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./config/db');
 const todoRoutes = require('./routes/todo.routes');
 const logger = require('./middleware/logger.middleware');
@@ -8,7 +9,7 @@ const notFound = require('./middleware/notFound.middleware');
 const errorHandler = require('./middleware/errorHandler.middleware');
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 connectDB();
 
 app.use(express.json());
