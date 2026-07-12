@@ -1,30 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const {
-  getAllTodos,
-  getTodoById,
-  createTodo,
-  updateTodo,
-  deleteTodo,
-} = require('../controllers/todo.controller');
-const { validateTodo } = require('../middleware/validate.middleware');
+  getAllCategories,
+  getCategoryById,
+  createCategory,
+  updateCategory,
+  deleteCategory,
+} = require('../controllers/category.controller');
+const { validateCategory } = require('../middleware/validate.middleware');
 
 /**
  * @swagger
  * tags:
- *   name: Todos
- *   description: Todo management endpoints
+ *   name: Categories
+ *   description: Category management endpoints
  */
 
 /**
  * @swagger
- * /api/todos:
+ * /api/categories:
  *   get:
- *     summary: Get all todos
- *     tags: [Todos]
+ *     summary: Get all categories
+ *     tags: [Categories]
  *     responses:
  *       200:
- *         description: List of all todos
+ *         description: List of all categories
  *         content:
  *           application/json:
  *             schema:
@@ -39,7 +39,7 @@ const { validateTodo } = require('../middleware/validate.middleware');
  *                 data:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Todo'
+ *                     $ref: '#/components/schemas/Category'
  *       500:
  *         description: Server error
  *         content:
@@ -47,24 +47,24 @@ const { validateTodo } = require('../middleware/validate.middleware');
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/', getAllTodos);
+router.get('/', getAllCategories);
 
 /**
  * @swagger
- * /api/todos/{id}:
+ * /api/categories/{id}:
  *   get:
- *     summary: Get a todo by ID
- *     tags: [Todos]
+ *     summary: Get a category by ID
+ *     tags: [Categories]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The todo ID
+ *         description: The category ID
  *     responses:
  *       200:
- *         description: Todo found
+ *         description: Category found
  *         content:
  *           application/json:
  *             schema:
@@ -73,31 +73,31 @@ router.get('/', getAllTodos);
  *                 success:
  *                   type: boolean
  *                 data:
- *                   $ref: '#/components/schemas/Todo'
+ *                   $ref: '#/components/schemas/Category'
  *       404:
- *         description: Todo not found
+ *         description: Category not found
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/:id', getTodoById);
+router.get('/:id', getCategoryById);
 
 /**
  * @swagger
- * /api/todos:
+ * /api/categories:
  *   post:
- *     summary: Create a new todo
- *     tags: [Todos]
+ *     summary: Create a new category
+ *     tags: [Categories]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/TodoInput'
+ *             $ref: '#/components/schemas/CategoryInput'
  *     responses:
  *       201:
- *         description: Todo created successfully
+ *         description: Category created successfully
  *         content:
  *           application/json:
  *             schema:
@@ -106,7 +106,7 @@ router.get('/:id', getTodoById);
  *                 success:
  *                   type: boolean
  *                 data:
- *                   $ref: '#/components/schemas/Todo'
+ *                   $ref: '#/components/schemas/Category'
  *       400:
  *         description: Validation error
  *         content:
@@ -114,30 +114,30 @@ router.get('/:id', getTodoById);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post('/', validateTodo, createTodo);
+router.post('/', validateCategory, createCategory);
 
 /**
  * @swagger
- * /api/todos/{id}:
+ * /api/categories/{id}:
  *   put:
- *     summary: Update a todo
- *     tags: [Todos]
+ *     summary: Update a category
+ *     tags: [Categories]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The todo ID
+ *         description: The category ID
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/TodoInput'
+ *             $ref: '#/components/schemas/CategoryInput'
  *     responses:
  *       200:
- *         description: Todo updated successfully
+ *         description: Category updated successfully
  *         content:
  *           application/json:
  *             schema:
@@ -146,30 +146,30 @@ router.post('/', validateTodo, createTodo);
  *                 success:
  *                   type: boolean
  *                 data:
- *                   $ref: '#/components/schemas/Todo'
+ *                   $ref: '#/components/schemas/Category'
  *       404:
- *         description: Todo not found
+ *         description: Category not found
  *       400:
  *         description: Validation error
  */
-router.put('/:id', validateTodo, updateTodo);
+router.put('/:id', validateCategory, updateCategory);
 
 /**
  * @swagger
- * /api/todos/{id}:
+ * /api/categories/{id}:
  *   delete:
- *     summary: Delete a todo
- *     tags: [Todos]
+ *     summary: Delete a category
+ *     tags: [Categories]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The todo ID
+ *         description: The category ID
  *     responses:
  *       200:
- *         description: Todo deleted successfully
+ *         description: Category deleted successfully
  *         content:
  *           application/json:
  *             schema:
@@ -179,10 +179,10 @@ router.put('/:id', validateTodo, updateTodo);
  *                   type: boolean
  *                 message:
  *                   type: string
- *                   example: Todo deleted successfully
+ *                   example: Category deleted successfully
  *       404:
- *         description: Todo not found
+ *         description: Category not found
  */
-router.delete('/:id', deleteTodo);
+router.delete('/:id', deleteCategory);
 
 module.exports = router;

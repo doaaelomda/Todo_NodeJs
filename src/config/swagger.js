@@ -4,18 +4,18 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Todo List API',
+      title: 'Course List API',
       version: '1.0.0',
       description:
-        'A simple RESTful API for managing todos, built with Node.js, Express, and MongoDB.',
+        'A simple RESTful API for managing courses, built with Node.js, Express, and MongoDB.',
       contact: {
         name: 'Doaa Elomda',
-        url: 'https://github.com/doaaelomda/Todo_NodeJs',
+        url: 'https://github.com/doaaelomda/Course_NodeJs',
       },
     },
     servers: [
       {
-        url: 'https://todonodejs-production.up.railway.app',
+        url: 'https://coursenodejs-production.up.railway.app',
         description: 'Production server (Railway)',
       },
       {
@@ -25,29 +25,49 @@ const options = {
     ],
     components: {
       schemas: {
-        Todo: {
+        Course: {
           type: 'object',
-          required: ['title'],
+          required: ['courseName', 'instructorName', 'category', 'duration', 'price', 'status'],
           properties: {
             _id: {
               type: 'string',
               description: 'Auto-generated MongoDB ID',
               example: '65f1a2b3c4d5e6f7a8b9c0d1',
             },
-            title: {
+            courseName: {
               type: 'string',
-              description: 'Todo title',
-              example: 'Learn Node.js',
+              description: 'Course name, minimum 3 characters',
+              example: 'Angular Fundamentals',
+            },
+            instructorName: {
+              type: 'string',
+              description: 'Instructor name',
+              example: 'Ahmed Ali',
+            },
+            category: {
+              type: 'string',
+              description: 'Category ID',
+              example: '65f1a2b3c4d5e6f7a8b9c0d2',
+            },
+            duration: {
+              type: 'number',
+              description: 'Duration in hours, must be greater than 0',
+              example: 20,
+            },
+            price: {
+              type: 'number',
+              description: 'Price, must not be less than 0',
+              example: 99.99,
+            },
+            status: {
+              type: 'string',
+              enum: ['Active', 'Draft', 'Archived'],
+              default: 'Draft',
             },
             description: {
               type: 'string',
-              description: 'Todo description',
-              example: 'Build a REST API with Express',
-            },
-            completed: {
-              type: 'boolean',
-              description: 'Completion status',
-              default: false,
+              description: 'Optional, up to 500 characters',
+              example: 'Build modern web apps with Angular',
             },
             createdAt: {
               type: 'string',
@@ -59,21 +79,71 @@ const options = {
             },
           },
         },
-        TodoInput: {
+        CourseInput: {
           type: 'object',
-          required: ['title'],
+          required: ['courseName', 'instructorName', 'category', 'duration', 'price', 'status'],
           properties: {
-            title: {
+            courseName: {
               type: 'string',
-              example: 'Learn Node.js',
+              example: 'Angular Fundamentals',
+            },
+            instructorName: {
+              type: 'string',
+              example: 'Ahmed Ali',
+            },
+            category: {
+              type: 'string',
+              example: '65f1a2b3c4d5e6f7a8b9c0d2',
+            },
+            duration: {
+              type: 'number',
+              example: 20,
+            },
+            price: {
+              type: 'number',
+              example: 99.99,
+            },
+            status: {
+              type: 'string',
+              enum: ['Active', 'Draft', 'Archived'],
+              example: 'Draft',
             },
             description: {
               type: 'string',
-              example: 'Build a REST API with Express',
+              example: 'Build modern web apps with Angular',
             },
-            completed: {
-              type: 'boolean',
-              example: false,
+          },
+        },
+        Category: {
+          type: 'object',
+          required: ['name'],
+          properties: {
+            _id: {
+              type: 'string',
+              description: 'Auto-generated MongoDB ID',
+              example: '65f1a2b3c4d5e6f7a8b9c0d2',
+            },
+            name: {
+              type: 'string',
+              example: 'Web Development',
+            },
+            createdAt: {
+              type: 'string',
+              format: 'date-time',
+            },
+            updatedAt: {
+              type: 'string',
+              format: 'date-time',
+            },
+          },
+        },
+        CategoryInput: {
+          type: 'object',
+          required: ['name'],
+          properties: {
+            name: {
+              type: 'string',
+              example: 'Web Development',
             },
           },
         },
