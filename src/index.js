@@ -5,8 +5,7 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/swagger');
 const connectDB = require('./config/db');
-const courseRoutes = require('./routes/course.routes');
-const categoryRoutes = require('./routes/category.routes');
+const todoRoutes = require('./routes/todo.routes');
 const logger = require('./middleware/logger.middleware');
 const notFound = require('./middleware/notFound.middleware');
 const errorHandler = require('./middleware/errorHandler.middleware');
@@ -20,21 +19,20 @@ app.use(cors());
 
 // Swagger UI docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-  customSiteTitle: 'Course API Docs',
+  customSiteTitle: 'Todo API Docs',
   customCss: '.swagger-ui .topbar { display: none }',
 }));
 
 app.get('/', (req, res) => {
   res.json({
     success: true,
-    message: 'Course API is running',
+    message: 'Todo API is running',
     docs: '/api-docs',
-    endpoints: '/api/courses',
+    endpoints: '/api/todos',
   });
 });
 
-app.use('/api/courses', courseRoutes);
-app.use('/api/categories', categoryRoutes);
+app.use('/api/todos', todoRoutes);
 app.use(logger);
 app.use(notFound);
 app.use(errorHandler);

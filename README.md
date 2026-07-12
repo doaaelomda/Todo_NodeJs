@@ -1,12 +1,12 @@
-# Course List REST API
+# Todo List REST API
 
-A simple RESTful API for managing courses, built with **Node.js**, **Express**, and **MongoDB**.
+A simple RESTful API for managing todos, built with **Node.js**, **Express**, and **MongoDB**.
 
 ## Live Demo & Documentation
 
-- **API Base URL:** https://coursenodejs-production.up.railway.app
-- **Interactive API Docs (Swagger UI):** https://coursenodejs-production.up.railway.app/api-docs/
-- **Try it:** [https://coursenodejs-production.up.railway.app/api/courses](https://coursenodejs-production.up.railway.app/api/courses)
+- **API Base URL:** https://todonodejs-production.up.railway.app
+- **Interactive API Docs (Swagger UI):** https://todonodejs-production.up.railway.app/api-docs/
+- **Try it:** [https://todonodejs-production.up.railway.app/api/todos](https://todonodejs-production.up.railway.app/api/todos)
 
 > Open the Swagger link to explore and test all endpoints directly from the browser — no Postman needed.
 
@@ -21,7 +21,7 @@ A simple RESTful API for managing courses, built with **Node.js**, **Express**, 
 
 ## Features
 
-- Full CRUD operations for courses
+- Full CRUD operations for todos
 - Interactive Swagger UI documentation
 - Input validation middleware
 - Custom error handling
@@ -30,18 +30,18 @@ A simple RESTful API for managing courses, built with **Node.js**, **Express**, 
 
 ## API Endpoints
 
-Base path: `/api/courses`
+Base path: `/api/todos`
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/courses` | Get all courses |
-| GET | `/api/courses/:id` | Get a single course by ID |
-| POST | `/api/courses` | Create a new course |
-| PUT | `/api/courses/:id` | Update a course |
-| DELETE | `/api/courses/:id` | Delete a course |
+| GET | `/api/todos` | Get all todos |
+| GET | `/api/todos/:id` | Get a single todo by ID |
+| POST | `/api/todos` | Create a new todo |
+| PUT | `/api/todos/:id` | Update a todo |
+| DELETE | `/api/todos/:id` | Delete a todo |
 | GET | `/api-docs/` | Swagger UI documentation |
 
-### Course Schema
+### Todo Schema
 
 ```json
 {
@@ -53,10 +53,10 @@ Base path: `/api/courses`
 
 ### Example Request
 
-**Create a course:**
+**Create a todo:**
 
 ```bash
-curl -X POST https://coursenodejs-production.up.railway.app/api/courses \
+curl -X POST https://todonodejs-production.up.railway.app/api/todos \
   -H "Content-Type: application/json" \
   -d '{"title": "Learn Node.js", "description": "Build a REST API"}'
 ```
@@ -89,8 +89,8 @@ curl -X POST https://coursenodejs-production.up.railway.app/api/courses \
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/doaaelomda/Course_NodeJs.git
-cd Course_NodeJs
+git clone https://github.com/doaaelomda/Todo_NodeJs.git
+cd Todo_NodeJs
 ```
 
 2. Install dependencies:
@@ -128,16 +128,16 @@ src/
 │   ├── db.js                    # MongoDB connection
 │   └── swagger.js               # Swagger configuration
 ├── controllers/
-│   └── course.controller.js     # Business logic
+│   └── todo.controller.js       # Business logic
 ├── middleware/
 │   ├── logger.middleware.js     # Request logger
 │   ├── validate.middleware.js   # Input validation
 │   ├── notFound.middleware.js   # 404 handler
 │   └── errorHandler.middleware.js
 ├── models/
-│   └── course.model.js          # Mongoose schema
+│   └── todo.model.js            # Mongoose schema
 ├── routes/
-│   └── course.routes.js         # Route definitions (with Swagger docs)
+│   └── todo.routes.js           # Route definitions (with Swagger docs)
 └── index.js                     # App entry point
 ```
 
