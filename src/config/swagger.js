@@ -15,8 +15,8 @@ const options = {
     },
     servers: [
       {
-        url: 'https://todonodejs-production.up.railway.app',
-        description: 'Production server (Railway)',
+        url: '/',
+        description: 'Current server',
       },
       {
         url: 'http://localhost:3000',

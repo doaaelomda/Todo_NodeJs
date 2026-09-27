@@ -16,6 +16,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors());
+app.use(logger);
 
 // Swagger UI docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
@@ -32,8 +33,10 @@ app.get('/', (req, res) => {
   });
 });
 
+// Health check (used by Render)
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
 app.use('/api/todos', todoRoutes);
-app.use(logger);
 app.use(notFound);
 app.use(errorHandler);
 
