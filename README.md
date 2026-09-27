@@ -4,9 +4,9 @@ A simple RESTful API for managing todos, built with **Node.js**, **Express**, an
 
 ## Live Demo & Documentation
 
-- **API Base URL:** https://todonodejs-production.up.railway.app
-- **Interactive API Docs (Swagger UI):** https://todonodejs-production.up.railway.app/api-docs/
-- **Try it:** [https://todonodejs-production.up.railway.app/api/todos](https://todonodejs-production.up.railway.app/api/todos)
+- **API Base URL:** https://todo-node-js-eta.vercel.app
+- **Interactive API Docs (Swagger UI):** https://todo-node-js-eta.vercel.app/api-docs/
+- **Try it:** [https://todo-node-js-eta.vercel.app/api/todos](https://todo-node-js-eta.vercel.app/api/todos)
 
 > Open the Swagger link to explore and test all endpoints directly from the browser — no Postman needed.
 
@@ -16,7 +16,7 @@ A simple RESTful API for managing todos, built with **Node.js**, **Express**, an
 - **Framework:** Express 5
 - **Database:** MongoDB (Mongoose ODM)
 - **Documentation:** Swagger UI (swagger-jsdoc + swagger-ui-express)
-- **Deployment:** Railway
+- **Deployment:** Vercel
 - **Other:** CORS, dotenv, nodemon
 
 ## Features
@@ -56,7 +56,7 @@ Base path: `/api/todos`
 **Create a todo:**
 
 ```bash
-curl -X POST https://todonodejs-production.up.railway.app/api/todos \
+curl -X POST https://todo-node-js-eta.vercel.app/api/todos \
   -H "Content-Type: application/json" \
   -d '{"title": "Learn Node.js", "description": "Build a REST API"}'
 ```
